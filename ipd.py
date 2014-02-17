@@ -4,11 +4,14 @@ import random;
 
 #params
 scores={'T':5,'R':3,'P':1,'S':0};
-N=1000000;
+N=100000;
 
 
 #line that will be modified(input)
-p={'cc':0.9,'cd':0.8,'dc':0.05,'dd':0.0};#[p1,p2,p3,p4];
+#[p1,p2,p3,p4];
+
+#p={'cc':0.9,'cd':0.8,'dc':0.05,'dd':0.0};#strategy to set s_y=1
+p={'cc':1,'cd':0,'dc':1,'dd':0};#strategy to set s_x=s_y
 
 #random strategy for Y player
 random.seed();
