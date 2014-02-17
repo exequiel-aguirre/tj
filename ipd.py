@@ -4,7 +4,7 @@ import random;
 
 #params
 scores={'T':5,'R':3,'P':1,'S':0};
-N=100;
+N=1000000;
 
 
 #line that will be modified(input)
@@ -54,5 +54,5 @@ for n in range(1, N):
   
   #print xy;
 
-print xScore/N;
-print yScore/N;
+print xScore/float(N);
+print yScore/float(N);
