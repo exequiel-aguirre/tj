@@ -1,5 +1,8 @@
 /*to use call load("det.mac");ratsimp(determinant(B)/determinant(C));*/
-
+/*to use call load("det.mac");ratsimp(diff(determinant(D)/determinant(C),q1));*/
+/*ratsimp(diff(determinant(D)/determinant(C),q4));
+ at (%,q4=0);
+*/
 M:matrix([p1*q1,p2*q3,p3*q2,p4*q4],
 [p1*(1-q1),p2*(1-q3),p3*(1-q2),p4*(1-q4)],
 [(1-p1)*q1,(1-p2)*q3,(1-p3)*q2,(1-p4)*q4],
@@ -10,10 +13,10 @@ M:matrix([p1*q1,p2*q3,p3*q2,p4*q4],
 /*D_x*/
 
 
-q1:1;
-q2:1;
-q3:1;
-q4:1;
+q1:0;
+q2:0;
+q3:0;
+
 
 p1:1-f*(x-1)*(R-P)/(P-S);
 p2:1-f*(1+ x * (T-P)/(P-S));
@@ -32,3 +35,12 @@ C:matrix([p1*q1-1,p1-1,q1-1,1],
 [p2*q3,p2-1,q3,1],
 [p3*q2,p3,q2-1,1],
 [p4*q4,p4,q4,1]);
+
+
+
+
+
+D:matrix([p1*q1-1,p1-1,q1-1,R],
+[p2*q3,p2-1,q3,T],
+[p3*q2,p3,q2-1,S],
+[p4*q4,p4,q4,P]);
