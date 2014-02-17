@@ -12,9 +12,8 @@ N=100000;
 
 #p={'cc':0.9,'cd':0.8,'dc':0.05,'dd':0.0};#strategy to set s_y=1
 
-phi=0.11;#1/5
-chi=2.0;#extortion coefficient, (Ji)
-
+phi=0.11;#0.2
+chi=2.0;#1.0 #extortion coefficient, (Ji)
 p={'cc':1.0-2.0*phi*(chi-1.0),'cd':1.0-phi*((4.0*chi)+1.0),'dc':phi*(chi+4.0),'dd':0.0};#strategy to set s_x-1=chi* (s_y - 1)
 
 
