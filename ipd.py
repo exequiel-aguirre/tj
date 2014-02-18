@@ -3,18 +3,21 @@ print "IPD";
 import random;
 
 #params
-scores={'T':5,'R':3,'P':1,'S':0};
-N=100000;
+T=5;
+R=3;
+P=1;
+S=0;
+N=1000000;
 
 
 #line that will be modified(input)
 #[p1,p2,p3,p4];
-
 #p={'cc':0.9,'cd':0.8,'dc':0.05,'dd':0.0};#strategy to set s_y=1
 
-phi=0.11;#0.2
-chi=2.0;#1.0 #extortion coefficient, (Ji)
-p={'cc':1.0-2.0*phi*(chi-1.0),'cd':1.0-phi*((4.0*chi)+1.0),'dc':phi*(chi+4.0),'dd':0.0};#strategy to set s_x-1=chi* (s_y - 1)
+chi=1.0;#1.0 #extortion coefficient, (Ji)
+phi=(P-S)/((P-S)+(chi*(T-P)))#0.1111;#0.2
+p={'cc':1.0-phi*(chi-1.0)*((R-P)/((P-S))),'cd':1.0-phi*((((T-P)/(P-S))*chi)+1.0),'dc':phi*(chi+((T-P)/(P-S))),'dd':0.0};#strategy to set s_x-1=chi* (s_y - 1)
+
 
 
 #random strategy for Y player
@@ -47,17 +50,17 @@ for n in range(1, N):
   xy=choice;
   ##TODO:CHECK THIS
   if xy=='cc':
-    xScore+=scores['R'];
-    yScore+=scores['R'];
+    xScore+=R;
+    yScore+=R;
   elif xy=='cd':
-    xScore+=scores['S'];
-    yScore+=scores['T'];
+    xScore+=S;
+    yScore+=T;
   elif xy=='dc':
-    xScore+=scores['T'];
-    yScore+=scores['S'];
+    xScore+=T;
+    yScore+=S;
   elif xy=='dd':
-    xScore+=scores['P'];
-    yScore+=scores['P'];
+    xScore+=P;
+    yScore+=P;
   
   #print xy;
 
