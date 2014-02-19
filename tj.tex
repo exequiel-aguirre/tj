@@ -101,6 +101,57 @@ $(w M)_j=\sum_{k=1}^4 w_k M_{kj} =\sum_{k=1}^4 A_{nk} M_{kj} = A_{nj}=w_j$
 Es decir que w M= w, por ende, w es proporcional a v.
 Dado que n es arbitrario, se puede concluir que cada fila de Adj(M') es proporcional a v
 
+Sea w, la cuarta fila de la matriz A, 
+\begin{center}
+$w:=(w_1,w_2,w_3,w_4)=(A_{41},A_{42},A_{43},A_{44})$.
+\end{center}
+Nos enfocaremos en la primera componente de w, por un momento.
+\begin{center}
+ $$
+ w_1=A_{41}=Adj(M')_{41}=(-1)^{4+1} C_{14}=- det
+ \begin{bmatrix}
+ p_2 q_3 & p_2(1-q_3)-1 &(1-p_2)q_3 \\
+ p_3 q_2 & p_3(1-q_2) &(1-p_3)q_2 -1 \\ 
+ p_4 q_4 & p_4(1-q_4) &(1-p_4)q_4 \\ 
+ \end{bmatrix}
+ $$
+ \end{center}
+ Donde $(-1)^{4+1} C_{14}$ es el cofactor de $M'_{41}$. Este determinante no se modifica si sumamos la 
+ primera columna de M' a la segunda y tercera, obteniendo
+ \begin{center}
+ $$w_1=- det
+ \begin{bmatrix}
+ p_2q_3 & p_2(1-q_3)-1+p_2q_3 &(1-p_2)q_3+p_2q_3 \\
+ p_3q_2 & p_3(1-q_2)+p_3q_2 &(1-p_3)q_2 -1+p_3q_2 \\ 
+ p_4q_4 & p_4(1-q_4)+p_4q_4 &(1-p_4)q_4+p_4q_4 \\ 
+ \end{bmatrix}
+ =- det
+ \begin{bmatrix}
+ p_2q_3 & p_2-1 & q_3 \\
+ p_3q_2 & p_3 & q_2-1 \\ 
+ p_4q_4 & p_4 & q_4 \\ 
+ \end{bmatrix} 
+ $$
+\end{center} 
+Llamemos $W_1$ a esta última matriz.Un cálculo similar se puede realizar y obtener matrices $W_2,W_3,W_4$ 
+correspondientes a $w_2,w_3,w_4$ respectivamente. Es decir que las componentes de v, son salvo un signo, 
+determinantes de una matriz de este tipo.
+Ahora sea, $f=(f_1,f_2,f_3,f_4)$,entonces,
+\begin{center}
+$$
+D(p,q,f):=det
+\begin{bmatrix}
+ p1q_1-1 & p_1-1 & q_1-1 & f_1 \\
+ p_2q_3 & p_2-1 & q_3 & f_2\\
+ p_3q_2 & p_3 & q_2-1  & f_3\\ 
+ p_4q_4 & p_4 & q_4 & f_4\\ 
+ \end{bmatrix} 
+ =-det(W_1)f_1 +det(W_2)f_2 -det(W_3)f_3 +det(W_4)f_4
+ $$\newline
+ $= v . f$
+
+\end{center}
+
  \section{Bibliografía}
   \begin{thebibliography}{1}
   \end{thebibliography}
