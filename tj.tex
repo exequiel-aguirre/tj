@@ -141,16 +141,40 @@ Ahora sea, $f=(f_1,f_2,f_3,f_4)$,entonces,
 $$
 D(p,q,f):=det
 \begin{bmatrix}
- p1q_1-1 & p_1-1 & q_1-1 & f_1 \\
+ p_1q_1-1 & p_1-1 & q_1-1 & f_1 \\
  p_2q_3 & p_2-1 & q_3 & f_2\\
  p_3q_2 & p_3 & q_2-1  & f_3\\ 
  p_4q_4 & p_4 & q_4 & f_4\\ 
  \end{bmatrix} 
  =-det(W_1)f_1 +det(W_2)f_2 -det(W_3)f_3 +det(W_4)f_4
  $$\newline
- $= v . f$
-
+ $= v \cdot f$
 \end{center}
+Notar que la segunda columna $\tilde{p}= (p_1-1,p_2-1,p_3,p_4)$ está solo bajo el control de X.
+Analogamente la tercera columna $\tilde{q}=(q_1-1,q_3,q_2-1,q_4)$ esta bajo el control de Y.
+Sean $S_X:=(R,S,T,P)$ , $S_Y:=(R,T,S,P)$ los vectores de pago de X e Y respectivamente.
+En su estado estacionario, podemos escribir los respectivos puntajes finales, como:
+\begin{center}
+$s_X={v \cdot S_X\over{v \cdot \overline1}} = {D(p,q,S_X)\over{D(p,q,\overline1)}}$ , 
+$s_Y={v \cdot S_Y\over{v \cdot \overline1}} = {D(p,q,S_Y)\over{D(p,q,\overline1)}}$
+\end{center}
+Donde el vector $\overline1:=(1,1,1,1)$.Estos denominadores son necesarios para que sus
+componentes sumen 1, (requerido en un para un vector de probabilidad estacionario)
+Dado que los puntajes s, dependen linealmente de los vectores de pago S, lo mismo
+sucede para una combinación lineal de los mismos.
+\begin{center}
+ $\alpha s_X + \beta s_Y + \gamma={D(p,q,\alpha S_X + \beta S_Y + \gamma\cdot \overline1)\over{D(p,q,\overline1)}}$
+\end{center}
+Esta es de alguna manera la ecuación más importante, pues tanto X como Y pueden elegir una
+estrategia que anule el numerador. Es decir, si X elije una estrategia 
+$\tilde{p}= \alpha S_X + \beta S_Y + \gamma\cdot \overline1$, o si Y elije una estrategia
+$\tilde{q}= \alpha S_X + \beta S_Y + \gamma\cdot \overline1$ entonces 
+
+\begin{center}
+$\alpha s_X + \beta s_Y + \gamma$=0
+\end{center}
+Estas son las llamadas, estrategias de determinante cero.
+
 
  \section{Bibliografía}
   \begin{thebibliography}{1}
@@ -158,4 +182,5 @@ D(p,q,f):=det
 
 
 \end{document}
+
 
