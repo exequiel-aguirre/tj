@@ -146,24 +146,26 @@ D(p,q,f):=det
  p_3q_2 & p_3 & q_2-1  & f_3\\ 
  p_4q_4 & p_4 & q_4 & f_4\\ 
  \end{bmatrix} 
- =-det(W_1)f_1 +det(W_2)f_2 -det(W_3)f_3 +det(W_4)f_4
- $$\newline
- $= v \cdot f$
+ $$
+ $$
+ =-det(W_1)f_1 +det(W_2)f_2 -det(W_3)f_3 +det(W_4)f_4 
+ = v \cdot f
+ $$
 \end{center}
 Notar que la segunda columna $\tilde{p}= (p_1-1,p_2-1,p_3,p_4)$ está solo bajo el control de X.
 Analogamente la tercera columna $\tilde{q}=(q_1-1,q_3,q_2-1,q_4)$ esta bajo el control de Y.
 Sean $S_X:=(R,S,T,P)$ , $S_Y:=(R,T,S,P)$ los vectores de pago de X e Y respectivamente.
 En su estado estacionario, podemos escribir los respectivos puntajes finales, como:
 \begin{center}
-$s_X={v \cdot S_X\over{v \cdot \overline1}} = {D(p,q,S_X)\over{D(p,q,\overline1)}}$ , 
-$s_Y={v \cdot S_Y\over{v \cdot \overline1}} = {D(p,q,S_Y)\over{D(p,q,\overline1)}}$
+$s_X=\frac{v \cdot S_X}{v \cdot \overline1} = \frac{D(p,q,S_X)}{D(p,q,\overline1)}$ , 
+$s_Y=\frac{v \cdot S_Y}{v \cdot \overline1} = \frac{D(p,q,S_Y)}{D(p,q,\overline1)}$
 \end{center}
 Donde el vector $\overline1:=(1,1,1,1)$.Estos denominadores son necesarios para que sus
 componentes sumen 1, (requerido en un para un vector de probabilidad estacionario)
 Dado que los puntajes s, dependen linealmente de los vectores de pago S, lo mismo
 sucede para una combinación lineal de los mismos.
 \begin{center}
- $\alpha s_X + \beta s_Y + \gamma={D(p,q,\alpha S_X + \beta S_Y + \gamma\cdot \overline1)\over{D(p,q,\overline1)}}$
+ $\alpha s_X + \beta s_Y + \gamma=\frac{D(p,q,\alpha S_X + \beta S_Y + \gamma\cdot \overline1)}{D(p,q,\overline1)}$
 \end{center}
 Esta es de alguna manera la ecuación más importante, pues tanto X como Y pueden elegir una
 estrategia que anule el numerador. Es decir, si X elije una estrategia 
@@ -175,7 +177,55 @@ $\alpha s_X + \beta s_Y + \gamma$=0
 \end{center}
 Estas son las llamadas, estrategias de determinante cero.
 
-\subsection{Estrategias de determinante cero}
+\subsection{X define unilateralmente el puntaje de Y}
+Un caso particular de una estrategia de determinante cero, es donde X define el puntaje de Y.
+Eligiendo $\alpha=0$ en la ecuación anterior, obtenemos: $\tilde{p}=\beta S_Y + \gamma \overline1$
+Esto nos define cuatro ecuaciones:
+$$p_1-1=\beta R + \gamma$$
+$$p_2-1=\beta T + \gamma$$
+$$p_3=\beta S + \gamma$$
+$$p_4=\beta P + \gamma$$
+Eliminando $\beta$ y $\gamma$, obtenemos,
+$$p_2=\frac{p_1(T-P)-(1-p_4)(T-R)}{R-P}$$
+$$p_3=\frac{(1-p_1)(P-S)+p_4(R-S)}{R-P}$$
+$$s_Y=\frac{-\gamma}{\beta}=\frac{\beta R+ 1-p_1}{\beta}=\frac{(1-p_1)P+p_4 R}{p_4-p_1+1}$$
+De esta última ecuación, se desprende que X puede forzar el puntaje de Y,
+$$P\leq s_Y\leq R $$
+
+\subsection{X intenta definir su propio puntaje}
+Analogamente al caso anterior,con $\tilde{p}=\alpha S_X + \gamma\overline1$  obtenemos,
+$$p_2=\frac{(1+p_4)(R-S)-p_1(P-S)}{R-P}\geq 1$$
+$$p_3=\frac{-(1-p_1)(T-P)-p_4(T-R)}{R-P}\leq 0$$
+Estas ecuaciones nos indican que la única estrategia posible es p=(1,1,0,0), es decir
+X no puede decidir su puntaje unilateralmente.
+
+
+\subsection{X demanda y obtiene una porción del puntaje de Y}
+El jugador X, ahora pretende establecer una relación lineal entre su puntaje y el de Y,
+$$(s_X -P)=\chi (s_y-P)$$
+con $\chi \geq 1$ (para así beneficiarse). Equivalentemente,
+$$(s_X -P)-\chi (s_y-P)=0 <=>\phi[(s_X -P)-\chi (s_y-P)]=0 <=>\frac{\phi}{P-S}[(s_X -P)-\chi (s_y-P)]=0$$
+Con $\phi>0$. X puede forzar esta relación eligiendo la estrategia
+$$\tilde{p}=\frac{\phi}{P-S}[(S_X-P\cdot\overline1)\ - \chi (S_Y-P\cdot\overline1)]$$
+Así obtenemos,
+$$p_1=1-\frac{\phi}{P-S}(R-P)(\chi-1)$$
+$$p_2=1-\phi(1+\chi \frac{T-P}{P-S})$$
+$$p_3=\phi(\frac{T-P}{P-S}+\chi )$$
+$$p_4=0$$
+De la ecuación de $p_2$ se puede verificar que,
+$$\phi(1+\chi\frac{T-P}{P-S})\leq 1 => \phi\leq(1+\chi \frac{T-P}{P-S})^{-1}=\frac{P-S}{(P-S) + \chi(T-P)}$$
+Ahora el puntaje de X depende del puntaje de Y.Ambos son máximos cuando Y coopera plenamente, con
+q=(1,1,1,1). En este caso, el puntaje de X es,
+$$s_X= \frac{D(p,q,S_X)}{D(p,q,\overline1)}=\frac{(\chi R + (1-\chi)P)T-\chi RS+(\chi-1)PR}{T-\chi S+(\chi-1)R}=$$
+$$\frac{P(T-R)+\chi[R(T-S)-P(T-R)]}{(T-R)+\chi(R-S)}$$
+Esta situación se puede hacer más concreta, con los valores convencionales (T,R,P,S)=(5,3,1,0), entonces,
+$$p=[1-2\phi(\chi-1),1-\phi(4 \chi+1),\phi(\chi+4),0]$$
+Donde los mejores puntajes posibles para X e Y son,
+$$s_X=\frac{2+13\chi}{2+3\chi}, s_Y=\frac{12+3\chi}{2+3\chi}$$
+El parametro \chi es conocido como el factor de extorsión. En el caso particular donde, \chi=1 , y \phi =1/5
+entonces la estrategia p=(1,0,1,0), la estrategia de tit-for-tat.
+
+
 
  \section{Bibliografía}
   \begin{thebibliography}{1}
@@ -183,5 +233,6 @@ Estas son las llamadas, estrategias de determinante cero.
 
 
 \end{document}
+
 
 
