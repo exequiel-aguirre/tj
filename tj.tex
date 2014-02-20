@@ -11,7 +11,7 @@
 \newtheorem{nota}{Nota}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
-\author{Exequiel Aguirre}
+
 \title{Estrategias de determinante cero de W.H. Press y F.J. Dyson}
 \date{}
 % document start
@@ -26,6 +26,8 @@ donde, unilateralmente, se pueda forzar a recibir una recompensa injusta.
 En el artículo publicado por W.H. Press y F.J. Dyson, se muestra que existen estrategias con esa característica.
 Con dichas estrategias, un jugador puede forzar el puntaje del oponente o establecer una relacion lineal entre
 el puntaje propio y el del oponente.
+En este trabajo, se pretende explicar lo expuesto en el paper original de W.H. Press y F.J. Dyson, completando
+algunos cálculos y aplicarlos en una simulación.
 \end{abstract}
 
 
@@ -222,11 +224,45 @@ Esta situación se puede hacer más concreta, con los valores convencionales (T,
 $$p=[1-2\phi(\chi-1),1-\phi(4 \chi+1),\phi(\chi+4),0]$$
 Donde los mejores puntajes posibles para X e Y son,
 $$s_X=\frac{2+13\chi}{2+3\chi}, s_Y=\frac{12+3\chi}{2+3\chi}$$
-El parametro \chi es conocido como el factor de extorsión. En el caso particular donde, \chi=1 , y \phi =1/5
+El parametro $\chi$ es conocido como el factor de extorsión. En el caso particular donde, $\chi=1$ , y $\phi =1/5$
 entonces la estrategia p=(1,0,1,0), la estrategia de tit-for-tat.
 
+\subsection{Extorsión a un jugador evolutivo}
+En los casos anteriores, X e Y fijaban una estrategia, que mantenian a lo largo de las iteraciones.
+Cabe preguntarse, que sucedería si Y fuera capaz de modificar su estrategia con el fin de maximizar su
+puntaje $s_Y$.
+Supongamos que Y, tiene una estrategia inicial, no cooperativa  , $q_0=(0,0,0,0)$ 
+Entonces estaría en el mejor interés de X, que el gradiente de $s_Y$ sea positivo, 
+con lo cual Y cambiaría su estrategia a una más cooperativa.
+$$\frac{\partial s_Y}{\partial q}|_{q=q_0}=(0,0,0,\frac{(T-S)(S+T-2P)}{\chi(T-P)+(P-S)})$$
+Donde $s_Y=\frac{D(p,q,S_Y)}{D(p,q,\overline1)}$.
+Para el caso de (T,R,P,S)=(5,3,1,0), la cuarta componente es positiva.
 
+\subsection{Apéndice: El jugador con menos memoria,fija las reglas de juego}
+Como se mencionaba al principio de este trabajo, se podría pensar que aquel jugador
+con una estrategia basada en multiples jugadas anteriores esta en ventaja, respecto de 
+un jugador con estrategias elaboradas basadas en una menor cantidad de jugadas.
+Ese no es el caso, cuando bajo iguales condiciones, el juego es repetido  indefinidamente.
+Por iguales condiciones, se quiere decir, mismos movimientos permitidos y mismos vectores
+de pago.
+Sean X e Y variables aleatorias con valores x,y correspondientes a los moviemientos en una iteración dada.
+Dado que los ppuntajes solo dependen de (x,y) en cada jugada, es suficiente con examinar la esperanza
+de la probabilidad conjunta de  (X,Y) sobre la historia H.
+Sea $H=[H_0,H_1]$ donde $H_0$ es la historia reciente compartida por X e Y, y $H_1$ es la historia con más antigua
+solo vista por Y. Entonces,
+$$<P(x,y|H_0,H_1)>_{H_0,H_1}=\sum_{H_0,H_1}P(x,y|H_0,H_1) P(H_0,H_1)=$$
+$$\sum_{H_0,H_1} P(x|H_0)P(y|H_0,H_1)P(H_0,H_1)=\sum_{H_0} P(x|H_0) \sum_{H_1} P(y|H_0,H_1)P(H_0,H_1)=$$
+$$\sum_{H_0}P(x|H_0)\sum_{H_1}P(y|H_0,H_1)P(H_0)P(H_1|H_0) =\sum_{H_0}P(x|H_0)P(H_0) \sum_{H_1}P(y|H_0,H_1)P(H_1|H_0)=^*$$
+$$\sum_{H_0}P(x|H_0)P(H_0)\sum P(y,H_1|H_0)=\sum_{H_0}P(x|H_0)P(H_0)P(y|H_0)=$$
+$$\sum_{H_0}P(x,y|H_0)P(H_0)=<P(x,y|H_0)>_{H_0} $$
 
+La primera igualdad es la definición de esperanza, la segunda igualdad proviene del hecho que x e y son independientes.La 
+igualdad *,proviene de,
+$$P(y|H_0,H_1)P(H_1|H_0)=\frac{P(y,H_0,H_1)}{P(H_0,H_1)} \frac{P(H_1,H_0)}{P(H_0)}=\frac{P(y,H_1,H_0)}{P(H_0)}=P(y,H_1|H_0)$$
+Lo notable es que el juego es determinado solo por $H_0$ donde Y juega la estrategia,
+$$P(y|H_0)=\sum_{H_1}P(y,H_1|H_0)$$
+Dado que esta estrategia solo depende de $H_0$, es una estrategia de corta memoria que produce el mismo
+resultado que la estrategia original.
  \section{Bibliografía}
   \begin{thebibliography}{1}
   \end{thebibliography}
