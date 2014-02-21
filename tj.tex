@@ -238,6 +238,89 @@ $$\frac{\partial s_Y}{\partial q}|_{q=q_0}=(0,0,0,\frac{(T-S)(S+T-2P)}{\chi(T-P)
 Donde $s_Y=\frac{D(p,q,S_Y)}{D(p,q,\overline1)}$.
 Para el caso de (T,R,P,S)=(5,3,1,0), la cuarta componente es positiva.
 
+
+
+\subsection{Resultados numéricos}
+A continuación se presenta una serie de resultados obtenidos a partir de un programa que simula múltiples jugadas, de dos
+jugadores, X e Y. La estrategia de X será una estrategia de determinante cero, mientras que la estrategia de Y será 
+generada aleatoriamente, al empezar el juego.
+En las siguientes tablas se mostrarán los resultados de las distintas estrategias y sus variantes, donde N es la cantidad de
+jugadas , $\overline s_Y$ es el promedio del puntaje del jugador Y. Los valores de (R,T,P,S) son los usuales.\newpage
+
+X fuerza el puntaje de Y, $s_Y=1$
+\begin{center}
+  \begin{tabular}{| l | l |}
+    \hline
+    N & $\overline s_Y$ \\\hline
+    100 & 1.18 \\\hline
+    1000 & 0.985 \\\hline
+    10000 & 0.9861 \\\hline
+    100000 & 0.99283 \\\hline
+    1000000 & 1.001047 \\\hline
+    10000000 & 0.9994806 \\\hline
+    
+  \end{tabular}
+\end{center}
+Estrategia extorsiva con $\chi=1$ (X fuerza un empate)
+\begin{center}
+  \begin{tabular}{| l | l | l |}    
+    \hline
+    N & $\overline s_X$ & $\overline s_Y$ \\\hline
+    100 & 2.04 & 2.09 \\\hline
+    1000 & 2.492 & 2.497 \\\hline
+    10000 & 2.1624 & 2.1629 \\\hline
+    100000 & 1.95382 & 1.95382 \\\hline
+  \end{tabular}
+\end{center}
+Estrategia extorsiva con $\chi=2$. 
+\begin{center}
+  \begin{tabular}{| l | l | l | l |}
+    \hline
+    N & $\overline s_X$ & $\overline
+    s_Y$ & $\overline s_Y$ esperado ($s_Y=\frac{(s_X-P)}{\chi} + P$)\\\hline
+    100 & 2.52 & 1.62 & 1.76\\\hline
+    1000 & 2.683 & 1.848 & 1.8415  \\\hline
+    10000 & 2.7489 & 1.8974 & 1.8744\\\hline
+    100000 & 2.4403 & 1.7238 & 1.7202 \\\hline
+    1000000 & 2.429798 & 1.716298 & 1.7149 \\\hline
+  \end{tabular}
+\end{center}
+
+Finalmente un ejemplo de una aplicación de las estrategias de determinante cero.
+Supongamos que las ganacias de Coca-cola y PepsiCo se dan de la siguiente manera:
+\begin{enumerate}
+ \item Si ambas mantienen precios altos, las ganancias de cada compañia se incrementan
+ en \$ 500 millones 
+ \item Si uno deja caer el precio,(no coopera) pero el otro mantiene (coopera) entonces 
+ el primero verá un incremento de \$750 , mientras que el segundo no verá una modificación.
+ \item Si ambas dejan caer el precio,entonces ambos verán un incremento de \$250 millones.
+\end{enumerate}
+ 
+La matriz de pagos se ve de la siguiente forma:
+
+\begin{tabular}{|l|r| l|}
+  \hline   
+     & c & d \\\hline
+   c & 500,500 & 0,750 \\ \hline
+   d & 750,0 & 250,250 \\  \hline  
+\end{tabular} 
+
+Si una de estas empresas decidiera utilizar una estrategia extorsiva, el resultado podría ser el
+siguiente:
+
+Estrategia extorsiva con $\chi=2$. 
+\begin{center}
+  \begin{tabular}{| l | l | l |}
+    \hline
+    N & $\overline s_X$ & $\overline s_Y$ \\\hline
+    10 & 350.0 &350.0 \\\hline
+    100 & 412.5 & 345.0 \\\hline
+    1000 & 466.0 & 353.5 \\\hline
+    10000 & 508.575 & 378.225 \\\hline    
+  \end{tabular}
+\end{center}
+
+
 \subsection{Apéndice: El jugador con menos memoria,fija las reglas de juego}
 Como se mencionaba al principio de este trabajo, se podría pensar que aquel jugador
 con una estrategia basada en multiples jugadas anteriores esta en ventaja, respecto de 
@@ -265,14 +348,11 @@ Dado que esta estrategia solo depende de $H_0$, es una estrategia de corta memor
 resultado que la estrategia original.
 
 
-
-
-
-
-
+\newpage
  \section{}
   \begin{thebibliography}{1}
   \bibitem{}  William H. Press and Freeman J. Dyson {\em (2012)Iterated Prisioner's Dilema contains strategies that dominate any evolutionary opponent}
+  \bibitem{}  Elvis Picardo {\em (2013) Utilizing Prisoner’s Dilemma In Business And The Economy }
   \end{thebibliography}
 
 
