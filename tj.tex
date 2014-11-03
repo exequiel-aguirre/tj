@@ -25,7 +25,7 @@ El juego del dilema del prisionero, en su versión de dos jugadores, puede ser u
 muchas situaciones del mundo real, que involucran cooperativismo y competencia. Se asume en general, que no hay 
 una estrategia donde, unilateralmente, se pueda forzar a recibir una recompensa injusta.\newline
 En el artículo publicado por W.H. Press y F.J. Dyson, se muestra que existen estrategias con esa característica.
-Con dichas estrategias, un jugador puede forzar el puntaje del oponente o establecer una relacion lineal entre
+Con dichas estrategias, un jugador puede forzar el puntaje del oponente o establecer una relación lineal entre
 el puntaje propio y el del oponente.\newline
 En este trabajo, se pretende explicar lo expuesto en el paper original de W.H. Press y F.J. Dyson, completando
 algunos cálculos y aplicarlos en una simulación.
@@ -42,10 +42,10 @@ El juego se puede presentar de la siguiente manera:\newline
 Dos miembros de una banda criminal son capturados por la policia e interrogados, por separado.
 Cada criminal tiene dos opciones, cooperar con su compañero o no cooperar.
 De ahora en adelante nos referiremos a cada criminal como, jugador X y jugador Y.
-Si X e Y cooperan, ambos ganan una recompensa R.Si uno de ellos no coopera,recibe un pago mayor T, mientras que el
+Si X e Y cooperan, ambos ganan una recompensa R, si uno de ellos no coopera recibe un pago mayor T, mientras que el
 jugador que coopera recibe una recompensa menor, S, usualmente cero. Si ambos no cooperan, entonces reciben una recompensa P.
 Para que el juego sea de interés, se debe satisfacer que $T >  R > P > S$ y $2R > T+S$.
-Los valores convencionales son (T,R,P,S)=(5,3,1,0)
+Los valores usuales son (T,R,P,S)=(5,3,1,0)
 \begin{center}
 \includegraphics[height=3cm]{./pd.png}
 \end{center}
@@ -62,7 +62,7 @@ anteriores. En forma análoga, la estrategia de Y es q=($q_1,q_2,q_3,q_4$) visto
 
 \section{Resultados}
 \subsection{Estrategias de determinante cero}
-Si bien es posible realizar una simulación del juego movimiento por movimiento,uno podría evitar esto, con una matriz
+Si bien es posible realizar una simulación del juego movimiento por movimiento uno podría evitar esto con una matriz
 de transición de Markov. Esta matriz es generada a partir de las estrategias p y q.
 $$M=
 \begin{bmatrix}
@@ -74,13 +74,18 @@ $$M=
 $$
 El valor $M_{ij}$ representa la probabilidad de pasar de un estado i a un estado j donde, i,j estan asociados a una 
 estrategia en (cc,cd,dc,dd), según la perspectiva de cada jugador.
-Por ejemplo, $M_{32}$ representa la probabilidad de pasar de un estado dc a cd.
-Un vector estacionario v es aquel tal que:
+Por ejemplo, $M_{32}$ representa la probabilidad de pasar de un estado dc a cd.\newline
+Definición: Un vector $v_s$ tal que,
+\begin{center}
+$v_s^T M = v_s^T$
+\end{center}
+Y su componentes suman 1, es llamado  vector estacionario.\newline
+Es decir, un autovector (a izquierda) asociado al autovalor 1.
+Notar que cualquier vector $v$ proporcional a $v_s$ también cumple con la condición:
 \begin{center}
 $v^T M = v^T$
 \end{center}
-Es decir, un autovector (a izquierda) asociado al autovalor 1.
-Con v y el vector de pagos asociado a cada jugador, uno puede calcular el resultado del juego.
+Con $v$ y el vector de pagos asociado a cada jugador, uno puede calcular el resultado del juego.
 
 Dado que M tiene un autovector asociado al autovalor 1, la matriz M':=M-I es singular y por ende, de 
 determinante cero.
