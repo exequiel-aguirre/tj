@@ -6,6 +6,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{pslatex}
 \usepackage{theorem}
+\usepackage{color}
 \newtheorem{teorema}{Teorema}
 \newtheorem{proposicion}{Proposición}
 \newtheorem{nota}{Nota}
@@ -87,13 +88,14 @@ $v^T M = v^T$
 \end{center}
 Con $v$ y el vector de pagos asociado a cada jugador, uno puede calcular el resultado del juego.
 
-Dado que M tiene un autovector asociado al autovalor 1, la matriz M':=M-I es singular y por ende, de 
-determinante cero.
-Si se aplica la regla de Cramer a la matriz M', se obtiene
+Dado que M tiene un autovector asociado al autovalor 1, la matriz $M'$:=M-I es singular y por ende, de 
+determinante cero.\newline
+De álgebra lineal se tiene el siguiente resultado:\newline
 \begin{center}
 $Adj(M')M' = det(M')I=0$
 \end{center}
-Sea A:=Adj(M'), entonces por la igualdad anterior, tenemos que:
+Donde Adj($M'$) es la matriz Adjunta de $M'$\footnote{Para más información sobre este resultado y las definiciones involucradas ver \cite{Ho}.}.\newline 
+Sea A:=Adj($M'$), entonces por la igualdad anterior, tenemos que:
 \begin{center}
 $AM'=A(M-I)=0 \Rightarrow AM=A$
 \end{center}
@@ -110,7 +112,8 @@ Entonces, el j-esimo elemento del vector (w M) es,
 $(w M)_j=\sum_{k=1}^4 w_k M_{kj} =\sum_{k=1}^4 A_{nk} M_{kj} = A_{nj}=w_j$
 \end{center}
 Es decir que w M= w, por ende, w es proporcional a v.
-Dado que n es arbitrario, se puede concluir que cada fila de Adj(M') es proporcional a v.
+Dado que n es arbitrario, se puede concluir que cada fila de Adj($M'$) es proporcional a v.
+\footnote{Esta afirmación no es trivial, proviene de aplicar el teorema de Perron-Frobenius. Para más información ver \cite{Ha}.}
 
 Sea w, la cuarta fila de la matriz A, 
 \begin{center}
@@ -128,7 +131,7 @@ Nos enfocaremos en la primera componente de w, por un momento.
  $$
  \end{center}
  Donde $(-1)^{4+1} C_{14}$ es el cofactor de $M'_{41}$. Este determinante no se modifica si sumamos la 
- primera columna de M' a la segunda y tercera, obteniendo
+ primera columna de $M'$ a la segunda y tercera, obteniendo
  \begin{center}
  $$w_1=- det
  \begin{bmatrix}
@@ -360,8 +363,10 @@ resultado que la estrategia original.
 \newpage
  \section{}
   \begin{thebibliography}{1}
-  \bibitem{}  Picardo E. {\em (2013) Utilizing Prisoner’s Dilemma In Business And The Economy }
-  \bibitem{}  Press W. H. , Dyson F. J.  {\em (2012) Iterated Prisioner's Dilema contains strategies that dominate any evolutionary opponent}  
+  \bibitem{Ha} Hauert Ch, Schuster HG (1997) Effects of increasing the number of players and memory steps in the Iterated Prisoner’s Dilemma, a numerical approach. Proc Biol Sci 264:513–519.
+  \bibitem{Ho}  Hoffman K.,Kunze R.  \emph{``Linear Algebra''},Prentice-Hall, 1973 (155-161)
+  \bibitem{PI}  Picardo E. {\em (2013) Utilizing Prisoner’s Dilemma In Business And The Economy }
+  \bibitem{PR}  Press W. H. , Dyson F. J.  {\em (2012) Iterated Prisioner's Dilema contains strategies that dominate any evolutionary opponent}  
   \end{thebibliography}
 
 
