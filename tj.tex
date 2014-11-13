@@ -239,17 +239,6 @@ $$s_X=\frac{2+13\chi}{2+3\chi}, s_Y=\frac{12+3\chi}{2+3\chi}$$
 El parametro $\chi$ es conocido como el factor de extorsión. En el caso particular donde, $\chi=1$ , y $\phi =1/5$
 entonces la estrategia p=(1,0,1,0) es la estrategia de tit-for-tat.
 
-\subsection{Extorsión a un jugador evolutivo}
-En los casos anteriores, X e Y fijaban una estrategia, que mantenian a lo largo de las iteraciones.
-Cabe preguntarse, que sucedería si Y fuera capaz de modificar su estrategia con el fin de maximizar su
-puntaje $s_Y$.
-Supongamos que Y, tiene una estrategia inicial, no cooperativa  , $q_0=(0,0,0,0)$. 
-Entonces estaría en el mejor interés de X, que el gradiente de $s_Y$ sea positivo, 
-con lo cual Y cambiaría su estrategia a una más cooperativa.
-$$\frac{\partial s_Y}{\partial q}|_{q=q_0}=(0,0,0,\frac{(T-S)(S+T-2P)}{\chi(T-P)+(P-S)})$$
-Donde $s_Y=\frac{D(p,q,S_Y)}{D(p,q,\overline1)}$.
-Para el caso de (T,R,P,S)=(5,3,1,0), la cuarta componente es efectivamente positiva.
-
 
 
 \subsection{Resultados numéricos}
@@ -257,7 +246,7 @@ A continuación se presenta una serie de resultados obtenidos a partir de un pro
 jugadores, X e Y. La estrategia de X será una estrategia de determinante cero, mientras que la estrategia de Y será 
 generada aleatoriamente, al empezar el juego.
 En las siguientes tablas se mostrarán los resultados de las distintas estrategias y sus variantes, donde N es la cantidad de
-jugadas , $\overline s_Y$ es el promedio del puntaje del jugador Y. Los valores de (R,T,P,S) son los usuales.\newpage
+jugadas y $\overline s_Y$ es el promedio del puntaje del jugador Y. Los valores de (R,T,P,S) son los usuales.\newpage
 
 X fuerza el puntaje de Y, $s_Y=1$
 \begin{center}
@@ -335,7 +324,7 @@ Estrategia extorsiva con $\chi=2$.
 
 \subsection{Apéndice: El jugador con menos memoria,fija las reglas de juego}
 Como se mencionaba al principio de este trabajo, se podría pensar que aquel jugador
-con una estrategia basada en multiples jugadas anteriores esta en ventaja, respecto de 
+con una estrategia basada en múltiples jugadas anteriores está en ventaja respecto de
 un jugador con estrategias elaboradas basadas en una menor cantidad de jugadas.
 Ese no es el caso, cuando bajo iguales condiciones, el juego es repetido  indefinidamente.
 Por iguales condiciones, se quiere decir, mismos movimientos permitidos y mismos vectores
@@ -343,7 +332,7 @@ de pago.\newline
 Sean X e Y variables aleatorias con valores x,y correspondientes a los moviemientos en una iteración dada.
 Dado que los puntajes solo dependen de (x,y) en cada jugada, es suficiente con examinar la esperanza
 de la probabilidad conjunta de  (X,Y) sobre la historia H.
-Sea $H=[H_0,H_1]$ donde $H_0$ es la historia reciente compartida por X e Y, y $H_1$ es la historia con más antigua
+Sea $H=[H_0,H_1]$ donde $H_0$ es la historia reciente compartida por X e Y, y $H_1$ es la historia con más antiguedad
 solo vista por Y. Entonces,
 $$<P(x,y|H_0,H_1)>_{H_0,H_1}=\sum_{H_0,H_1}P(x,y|H_0,H_1) P(H_0,H_1)=$$
 $$\sum_{H_0,H_1} P(x|H_0)P(y|H_0,H_1)P(H_0,H_1)=\sum_{H_0} P(x|H_0) \sum_{H_1} P(y|H_0,H_1)P(H_0,H_1)=$$
