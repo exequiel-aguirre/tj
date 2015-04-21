@@ -1,11 +1,17 @@
-\documentclass[12pt]{article}
-\usepackage{lineno}
+\documentclass[11pt]{article}
+\textheight7.1truein
+\textwidth5.2truein
+\topmargin-0.5truein
+\setcounter{page}{3}
+
+\usepackage {amsmath , amsthm , amssymb}
+\usepackage {fancyhdr}
+
+
 \usepackage[spanish]{babel}
-\usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{pslatex}
-\usepackage{theorem}
 \usepackage{color}
 \newtheorem{teorema}{Teorema}
 \newtheorem{proposicion}{Proposición}
@@ -13,13 +19,16 @@
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 
-\title{Estrategias de determinante cero de W.H. Press y F.J. Dyson}
-\date{}
-\author{Exequiel Aguirre}
 % document start
 \begin{document}
 %\linenumbers
-\maketitle
+\begin{center}
+{ \LARGE \bf Estrategias de determinante cero de W.H. Press y F.J. Dyson}
+\vskip 0.25cm
+{\it Exequiel Aguirre}
+
+\end{center}
+
 
 \begin{abstract}
 El juego del dilema del prisionero, en su versión de dos jugadores, puede ser usado como modelo para 
@@ -38,7 +47,7 @@ algunos cálculos y aplicarlos en una simulación.
 \section{Introducción}
 El dilema del prisionero provee un  marco para entender como dar con un balance entre cooperación y competencia, y es
 por eso una herramienta muy útil para tomar deciciones estratégicas.
-Tiene aplicaciones en diversas áreas, como por ejemplo: economía,política,biología,psicología y sociología.\newline
+Tiene aplicaciones en diversas áreas, como por ejemplo: economía, política, biología, psicología y sociología.\newline
 El juego se puede presentar de la siguiente manera:\newline
 Dos miembros de una banda criminal son capturados por la policia e interrogados, por separado.
 Cada criminal tiene dos opciones, cooperar con su compañero o no cooperar.
@@ -53,9 +62,9 @@ Los valores usuales son (T,R,P,S)=(5,3,1,0)
 
 
 El dilema del prisionero iterado, consiste en sucesivas partidas jugadas por, digamos X e Y.
-Aquí los jugadores podrían basar sus jugadas en las jugadas anteriores.Sería natural pensar que el jugador que es
+Aquí los jugadores podrían basar sus jugadas en las jugadas anteriores. Sería natural pensar que el jugador que es
 capaz de recordar más jugadas, podría confeccionar una estrategia más eficiente y así llevar ventaja.
-Se va a probar luego, que esto no es así, y que solo importa la última jugada. Es por eso que las estrategias seran elaboradas
+Se prueba que esto no es así, y que solo importa la última jugada\footnote{Para la demostración de este resultado ver el apéndice A de \cite{PR}.}. Es por eso que las estrategias seran elaboradas
 a partir de el último resultado, sin pérdida de generalidad.
 Es decir, cada jugador va a basar su estrategia en el resultado xy $\in$ (cc,cd,dc,dd) donde c significa cooperar y d, no cooperar 
 (defect en inglés). La estrategia de X, p=($p_1,p_2,p_3,p_4$) son las probabilidades de cooperar en cada una de las situaciones 
@@ -73,10 +82,11 @@ $$M=
  p_4 q_4 &p_4(1-q_4) &(1-p_4)q_4 &(1-p_4)(1-q_4)\\
 \end{bmatrix}
 $$
-El valor $M_{ij}$ representa la probabilidad de pasar de un estado i a un estado j donde, i,j estan asociados a una 
+El valor $M_{ij}$ representa la probabilidad de pasar de un estado i a un estado j donde, i j estan asociados a una 
 estrategia en (cc,cd,dc,dd), según la perspectiva de cada jugador.
 Por ejemplo, $M_{32}$ representa la probabilidad de pasar de un estado dc a cd.\newline
-Definición: Un vector $v_s$ tal que,
+Definición: Sean $S_X:=(R,S,T,P)^T$ , $S_Y:=(R,T,S,P)^T$ los vectores de pago de los jugadores X e Y respectivamente.\newline
+Definición: Un vector columna 4x1 $v_s$ tal que,
 \begin{center}
 $v_s^T M = v_s^T$
 \end{center}
@@ -86,7 +96,7 @@ Notar que cualquier vector $v$ proporcional a $v_s$ también cumple con la condi
 $v^T M = v^T$
 \end{center}
 Es decir, un autovector (a izquierda) asociado al autovalor 1.
-Con $v$ y el vector de pagos asociado a cada jugador, uno puede calcular el resultado del juego.
+Afirmamos que con $v$ y el vector de pagos asociado a cada jugador, uno puede calcular el resultado del juego.
 
 Dado que M tiene un autovector asociado al autovalor 1, la matriz $M'$:=M-I es singular y por ende, de 
 determinante cero.\newline
@@ -94,7 +104,7 @@ De álgebra lineal se tiene el siguiente resultado:\newline
 \begin{center}
 $Adj(M')M' = det(M')I=0$
 \end{center}
-Donde Adj($M'$) es la matriz Adjunta de $M'$\footnote{Para más información sobre este resultado y las definiciones involucradas ver \cite{Ho}.}.\newline 
+Donde Adj($M'$) es la matriz Adjunta de $M'$.\footnote{Para más información sobre este resultado y las definiciones involucradas ver \cite{Ho}.}\newline 
 Sea A:=Adj($M'$), entonces por la igualdad anterior, tenemos que:
 \begin{center}
 $AM'=A(M-I)=0 \Rightarrow AM=A$
@@ -103,19 +113,19 @@ Es decir, que el elemento
 \begin{center}
 $(AM)_{ij}=\sum_{k=1}^4 A_{ik} M_{kj} = A_{ij}$
 \end{center}
-Ahora, sea w la n-esima fila de A.
+Ahora, sea $w$ la n-esima fila de A, con n=1, 2, 3, 4 .
 \begin{center}
 $w:=(w_1,w_2,w_3,w_4)=(A_{n1},A_{n2},A_{n3},A_{n4})$
 \end{center}
-Entonces, el j-esimo elemento del vector (w M) es,
+Entonces, el j-esimo elemento del vector ($w M$) es,
 \begin{center}
 $(w M)_j=\sum_{k=1}^4 w_k M_{kj} =\sum_{k=1}^4 A_{nk} M_{kj} = A_{nj}=w_j$
 \end{center}
-Es decir que w M= w, por ende, w es proporcional a v.
-Dado que n es arbitrario, se puede concluir que cada fila de Adj($M'$) es proporcional a v.
+Es decir que $w M= w$, por ende, $w$ es proporcional a $v$.
+Dado que n es arbitrario, se puede concluir que cada fila de Adj($M'$) es proporcional a $v$.
 \footnote{Esta afirmación no es trivial, proviene de aplicar el teorema de Perron-Frobenius. Para más información ver \cite{Ha}.}
 
-Sea w, la cuarta fila de la matriz A, 
+Sea $w$, la cuarta fila de la matriz A, 
 \begin{center}
 $w:=(w_1,w_2,w_3,w_4)=(A_{41},A_{42},A_{43},A_{44})$.
 \end{center}
@@ -133,24 +143,24 @@ Nos enfocaremos en la primera componente de w, por un momento.
  Donde $(-1)^{4+1} C_{14}$ es el cofactor de $M'_{41}$. Este determinante no se modifica si sumamos la 
  primera columna de $M'$ a la segunda y tercera, obteniendo
  \begin{center}
- $$w_1=- det
+ $w_1=- det
  \begin{bmatrix}
  p_2q_3 & p_2(1-q_3)-1+p_2q_3 &(1-p_2)q_3+p_2q_3 \\
  p_3q_2 & p_3(1-q_2)+p_3q_2 &(1-p_3)q_2 -1+p_3q_2 \\ 
  p_4q_4 & p_4(1-q_4)+p_4q_4 &(1-p_4)q_4+p_4q_4 \\ 
  \end{bmatrix}
- =- det
+  =- det
  \begin{bmatrix}
  p_2q_3 & p_2-1 & q_3 \\
  p_3q_2 & p_3 & q_2-1 \\ 
  p_4q_4 & p_4 & q_4 \\ 
  \end{bmatrix} 
- $$
+ $
 \end{center} 
 Llamemos $W_1$ a esta última matriz.Un cálculo similar se puede realizar y obtener matrices $W_2,W_3,W_4$ 
 correspondientes a $w_2,w_3,w_4$ respectivamente. Es decir que las componentes de v, son salvo un signo y una constante c, 
 determinantes de una matriz de este tipo.
-Ahora sea, $f=(f_1,f_2,f_3,f_4)$,entonces,
+Ahora sea, $f=(f_1,f_2,f_3,f_4)^T$, entonces definimos,
 \begin{center}
 $$
 D(p,q,f):=det
@@ -166,34 +176,38 @@ D(p,q,f):=det
  = c v \cdot f
  $$
 \end{center}
-Notar que la segunda columna $\tilde{p}= (p_1-1,p_2-1,p_3,p_4)$ está solo bajo el control de X.
-Analogamente la tercera columna $\tilde{q}=(q_1-1,q_3,q_2-1,q_4)$ esta bajo el control de Y.\newline
-Sean $S_X:=(R,S,T,P)$ , $S_Y:=(R,T,S,P)$ los vectores de pago de X e Y respectivamente.
-En su estado estacionario, podemos escribir los respectivos puntajes finales, como:
+Notar que la segunda columna $\tilde{p}:= (p_1-1,p_2-1,p_3,p_4)^T$ está solo bajo el control de X.
+Analogamente la tercera columna $\tilde{q}:=(q_1-1,q_3,q_2-1,q_4)^T$ esta bajo el control de Y.\newline
+
+En su estado estacionario, podemos definir los respectivos puntajes finales, como:
 \begin{center}
-$s_X=\frac{v \cdot S_X}{v \cdot \overline1} = \frac{D(p,q,S_X)}{D(p,q,\overline1)}$ , 
-$s_Y=\frac{v \cdot S_Y}{v \cdot \overline1} = \frac{D(p,q,S_Y)}{D(p,q,\overline1)}$
+$s_X:=\frac{v \cdot S_X}{v \cdot \overline1} = \frac{D(p,q,S_X)}{D(p,q,\overline1)}$ , 
+$s_Y:=\frac{v \cdot S_Y}{v \cdot \overline1} = \frac{D(p,q,S_Y)}{D(p,q,\overline1)}$
 \end{center}
-Donde el vector $\overline1:=(1,1,1,1)$.Estos denominadores son necesarios para que las
+Donde el vector $\overline1:=(1,1,1,1)$. Estos denominadores son necesarios para que las
 componentes sumen 1, (requerido en un para un vector de probabilidad estacionario).
-Dado que los puntajes s, dependen linealmente de los vectores de pago S, lo mismo
-sucede para una combinación lineal de los mismos.
+Notar que una combinación lineal de los puntajes finales $s_X$, $s_Y$ satisface:
 \begin{center}
  $\alpha s_X + \beta s_Y + \gamma=\frac{D(p,q,\alpha S_X + \beta S_Y + \gamma\cdot \overline1)}{D(p,q,\overline1)}$
 \end{center}
-Esta es de alguna manera la ecuación más importante, pues tanto X como Y pueden elegir una
-estrategia que anule el numerador. Es decir, si X elije una estrategia 
+con $\alpha, \beta, \gamma \in \Re$.\newline
+Esta igualdad será central en las siguientes secciones.
+Notar que tanto X como Y pueden elegir, unilateralmente, una
+estrategia que anule $D(p,q,\alpha S_X + \beta S_Y + \gamma\cdot \overline1)$. Es decir, si X elije una estrategia 
 $\tilde{p}= \alpha S_X + \beta S_Y + \gamma\cdot \overline1$, o si Y elije una estrategia
-$\tilde{q}= \alpha S_X + \beta S_Y + \gamma\cdot \overline1$ entonces 
-
+$\tilde{q}= \alpha S_X + \beta S_Y + \gamma\cdot \overline1$ entonces la relación lineal entre
+los puntajes de X e Y, dada por la expresión:
 \begin{center}
 $\alpha s_X + \beta s_Y + \gamma$=0
 \end{center}
+se ve forzada.
 Estas son las llamadas, estrategias de determinante cero.
+Notar que no todas las estrategias de determinante cero son posibles, ya que las entradas de p y q deben pertenecer al $[0,1]$.
 
 \subsection{X define unilateralmente el puntaje de Y}
 Un caso particular de una estrategia de determinante cero, es donde X define el puntaje de Y.
-Eligiendo $\alpha=0$ en la ecuación anterior, obtenemos: $\tilde{p}=\beta S_Y + \gamma \overline1$
+Si, eligiendo $\alpha=0$, al jugador X le damos una estrategia $\tilde{p}=\beta S_Y + \gamma \overline1$.
+
 Esto nos define cuatro ecuaciones:
 $$p_1-1=\beta R + \gamma$$
 $$p_2-1=\beta T + \gamma$$
@@ -203,23 +217,25 @@ Eliminando $\beta$ y $\gamma$, obtenemos,
 $$p_2=\frac{p_1(T-P)-(1-p_4)(T-R)}{R-P}$$
 $$p_3=\frac{(1-p_1)(P-S)+p_4(R-S)}{R-P}$$
 $$s_Y=\frac{-\gamma}{\beta}=\frac{\beta R+ 1-p_1}{\beta}=\frac{(1-p_1)P+p_4 R}{p_4-p_1+1}$$
-De esta última ecuación, se desprende que X puede forzar el puntaje de Y,
+Recordemos que $R-P\neq 0$.
+De esta última ecuación, se desprende que X puede forzar el puntaje de Y, en los valores
 $$P\leq s_Y\leq R $$
 
 \subsection{X intenta definir su propio puntaje}
-Analogamente al caso anterior,con $\tilde{p}=\alpha S_X + \gamma\overline1$  obtenemos,
+Analogamente al caso anterior, con $\tilde{p}=\alpha S_X + \gamma\overline1$  obtenemos,
 $$p_2=\frac{(1+p_4)(R-S)-p_1(P-S)}{R-P}\geq 1$$
 $$p_3=\frac{-(1-p_1)(T-P)-p_4(T-R)}{R-P}\leq 0$$
-Estas ecuaciones nos indican que la única estrategia posible es p=(1,1,0,0), es decir
+Estas ecuaciones nos indican que la única estrategia posible es p=(1,1,0,0), esto es 'Cooperar siempre, o no cooperar nunca'. Es decir
 X no puede decidir su puntaje unilateralmente.
 
 
 \subsection{X demanda y obtiene una porción del puntaje de Y}
-El jugador X, ahora pretende establecer una relación lineal entre su puntaje y el de Y,
-$$(s_X -P)=\chi (s_y-P)$$
-con $\chi \geq 1$ (para así beneficiarse). Equivalentemente,
-$$(s_X -P)-\chi (s_y-P)=0 \Leftrightarrow \phi[(s_X -P)-\chi (s_y-P)]=0 \Leftrightarrow \frac{\phi}{P-S}[(s_X -P)-\chi (s_y-P)]=0$$
-Con $\phi>0$. X puede forzar esta relación eligiendo la estrategia
+El jugador X, ahora pretende recibir una recompensa mayor que la de no cooperación mutua P.
+Contruiremos una estrategia que cumpla dicho objetivo, partiendo de la relación deseada entre los puntajes de X e Y
+$$(s_X -P)=\chi (s_Y-P)$$
+Donde $\chi \geq 1$. Equivalentemente,
+$$(s_X -P)-\chi (s_Y-P)=0$$ $$\Leftrightarrow \phi[(s_X -P)-\chi (s_Y-P)]=0, \quad \forall \phi>0$$ $$\Leftrightarrow \frac{\phi}{P-S}[(s_X -P)-\chi (s_Y-P)]=0, \quad \forall \phi>0$$
+X puede forzar esta relación eligiendo la estrategia
 $$\tilde{p}=\frac{\phi}{P-S}[(S_X-P\cdot\overline1)\ - \chi (S_Y-P\cdot\overline1)]$$
 Así obtenemos,
 $$p_1=1-\frac{\phi}{P-S}(R-P)(\chi-1)$$
@@ -228,7 +244,7 @@ $$p_3=\phi(\frac{T-P}{P-S}+\chi )$$
 $$p_4=0$$
 De la ecuación de $p_2$ se puede verificar que,
 $$\phi(1+\chi\frac{T-P}{P-S})\leq 1 \Rightarrow \phi\leq(1+\chi \frac{T-P}{P-S})^{-1}=\frac{P-S}{(P-S) + \chi(T-P)}$$
-Ahora el puntaje de X depende del puntaje de Y.Ambos son máximos cuando Y coopera plenamente, con
+Ahora el puntaje de X depende del puntaje de Y. Ambos son máximos cuando Y coopera plenamente, con
 q=(1,1,1,1). En este caso, el puntaje de X es,
 $$s_X= \frac{D(p,q,S_X)}{D(p,q,\overline1)}=\frac{(\chi R + (1-\chi)P)T-\chi RS+(\chi-1)PR}{T-\chi S+(\chi-1)R}=$$
 $$\frac{P(T-R)+\chi[R(T-S)-P(T-R)]}{(T-R)+\chi(R-S)}$$
@@ -237,7 +253,8 @@ $$p=[1-2\phi(\chi-1),1-\phi(4 \chi+1),\phi(\chi+4),0]$$
 Donde los mejores puntajes posibles para X e Y son,
 $$s_X=\frac{2+13\chi}{2+3\chi}, s_Y=\frac{12+3\chi}{2+3\chi}$$
 El parametro $\chi$ es conocido como el factor de extorsión. En el caso particular donde, $\chi=1$ , y $\phi =1/5$
-entonces la estrategia p=(1,0,1,0) es la estrategia de tit-for-tat.
+entonces p=(1,0,1,0) es la estrategia conocida como "tit-for-tat", que consiste en cooperar en la primera 
+iteración del juego y luego replicar la acción previa del oponente para las sucesivas iteraciones.
 
 
 
@@ -322,31 +339,6 @@ Estrategia extorsiva con $\chi=2$.
 \end{center}
 
 
-\subsection{Apéndice: El jugador con menos memoria,fija las reglas de juego}
-Como se mencionaba al principio de este trabajo, se podría pensar que aquel jugador
-con una estrategia basada en múltiples jugadas anteriores está en ventaja respecto de
-un jugador con estrategias elaboradas basadas en una menor cantidad de jugadas.
-Ese no es el caso, cuando bajo iguales condiciones, el juego es repetido  indefinidamente.
-Por iguales condiciones, se quiere decir, mismos movimientos permitidos y mismos vectores
-de pago.\newline
-Sean X e Y variables aleatorias con valores x,y correspondientes a los moviemientos en una iteración dada.
-Dado que los puntajes solo dependen de (x,y) en cada jugada, es suficiente con examinar la esperanza
-de la probabilidad conjunta de  (X,Y) sobre la historia H.
-Sea $H=[H_0,H_1]$ donde $H_0$ es la historia reciente compartida por X e Y, y $H_1$ es la historia con más antiguedad
-solo vista por Y. Entonces,
-$$<P(x,y|H_0,H_1)>_{H_0,H_1}=\sum_{H_0,H_1}P(x,y|H_0,H_1) P(H_0,H_1)=$$
-$$\sum_{H_0,H_1} P(x|H_0)P(y|H_0,H_1)P(H_0,H_1)=\sum_{H_0} P(x|H_0) \sum_{H_1} P(y|H_0,H_1)P(H_0,H_1)=$$
-$$\sum_{H_0}P(x|H_0)\sum_{H_1}P(y|H_0,H_1)P(H_0)P(H_1|H_0) =\sum_{H_0}P(x|H_0)P(H_0) \sum_{H_1}P(y|H_0,H_1)P(H_1|H_0)=^*$$
-$$\sum_{H_0}P(x|H_0)P(H_0)\sum_{H_1} P(y,H_1|H_0)=\sum_{H_0}P(x|H_0)P(H_0)P(y|H_0)=$$
-$$\sum_{H_0}P(x,y|H_0)P(H_0)=<P(x,y|H_0)>_{H_0} $$
-
-La primera igualdad es la definición de esperanza, la segunda igualdad proviene del hecho que x e y son independientes.La 
-igualdad *,proviene de,
-$$P(y|H_0,H_1)P(H_1|H_0)=\frac{P(y,H_0,H_1)}{P(H_0,H_1)} \frac{P(H_1,H_0)}{P(H_0)}=\frac{P(y,H_1,H_0)}{P(H_0)}=P(y,H_1|H_0)$$
-Lo notable es que el juego es determinado solo por $H_0$ donde Y juega la estrategia,
-$$P(y|H_0)=\sum_{H_1}P(y,H_1|H_0)$$
-Dado que esta estrategia solo depende de $H_0$, es una estrategia de corta memoria que produce el mismo
-resultado que la estrategia original.
 
 
 \newpage
